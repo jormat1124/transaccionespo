@@ -5,6 +5,11 @@ require_once('transacciones\transacciones.php');
 require_once('service\IServiceBase.php');
 require_once('transacciones\TransaccionServiceCookies.php');
 
+require_once('helpers\FileHandler\JsonFileHandler.php');
+require_once('helpers\FileHandler\JsonFileHandler.php');
+require_once('transacciones\TransaccionServiceFile.php');
+
+
 $layout = new Layout(false);
 $utilities = new utilities();
 $service = new TransaccionServiceCookie();

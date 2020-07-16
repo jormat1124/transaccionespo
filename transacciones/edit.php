@@ -1,15 +1,20 @@
 
 <?php
 
+
 require_once('..\layout\layout.php');
 require_once('..\helpers\utilities.php');
 require_once('transacciones.php');
 require_once('..\service\IServiceBase.php');
 require_once('TransaccionServiceCookies.php');
+require_once('../helpers\FileHandler\JsonFileHandler.php');
+require_once('../helpers\FileHandler\JsonFileHandler.php');
+require_once('../transacciones\TransaccionServiceFile.php');
+
 
 $layout = new Layout(true);
 $utilities = new utilities();
-$service = new TransaccionServiceCookie();
+$service = new TransaccionServiceFile();
 
 
 $datatime=$utilities->getDateTime();
