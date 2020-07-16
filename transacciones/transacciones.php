@@ -1,14 +1,11 @@
 <?PHP
 
-class Estudiant{
+class Transaccion{
     public $id;
-    public $nombre;
-    public $apellido;
-    public $carreraId;
-    public $estadoId;
-    public $materias=array();
-    public $profilePhoto;
-
+    public $datatime;
+    public $monto;
+    public $descripcion;
+  
 
     private $utilities;
 
@@ -18,23 +15,21 @@ class Estudiant{
             $this->utilities = New Utilities;
     }
 
-    public function InicializeData($id, $nombre, $apellido, $carreraId,$estadoId,$materias){
+    public function InicializeData($id, $datatime, $monto, $descripcion){
 
         $this->id = $id;
-        $this->nombre = $nombre;
-        $this->apellido = $apellido;
-        $this->carreraId = $carreraId;
-        $this->estadoId = $estadoId;
-        $this->materias = $materias;
+        $this->datatime = $datatime;
+        $this->monto = $monto;
+        $this->descripcion = $descripcion;
+       
 
 
     }
 
-
     public function set($data)
 {
     foreach($data as $key => $value)$this->{$key} = $value;
-}
+}/* 
 
     function getCarreraName(){
 
@@ -62,7 +57,7 @@ class Estudiant{
             return $this->utilities->materia[$mate];
         }
     }
-
+*/
     
 
 

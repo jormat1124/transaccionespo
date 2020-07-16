@@ -3,12 +3,12 @@
 class Utilities
 {
     
-
+/*
     public $carrera = [1 => "Software", 2 => "Redes" , 3 => "Multimedia", 4 => "Mecatronica" ,5 => "Seguridad"];
     public $estado = [1 => "Activo", 2 => "Inactivo"]; 
     public $materia = [1 => "Matematica", 2 => "Ingenieria", 3 => "Web", 4 => "Estructura", 5 => "Inteligencia"]; 
     
-
+*/
     
     public function GetCookieTime()
     {
@@ -49,6 +49,12 @@ class Utilities
         return $index;
     }
 
+    public function getDateTime(){
+        ini_set('date.timezone','America/Santo_Domingo');
+        $datatime = date("Y-m-d H:i:s",time());
+        return $datatime;
+    }
+/*
     public function uploadImage($directory, $name, $tmpFile, $type, $size)
     {
 
@@ -89,7 +95,7 @@ class Utilities
         }
         move_uploaded_file($tmpFile, $name);
     }
-}
+*/}
 
 
 ?>
