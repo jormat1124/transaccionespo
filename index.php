@@ -5,44 +5,33 @@ require_once('transacciones\transacciones.php');
 require_once('service\IServiceBase.php');
 require_once('transacciones\TransaccionServiceCookies.php');
 
-require_once('helpers\FileHandler\JsonFileHandler.php');
+require_once('helpers\FileHandler\IFileHandler.php ');
 require_once('helpers\FileHandler\JsonFileHandler.php');
 require_once('transacciones\TransaccionServiceFile.php');
 
 
 $layout = new Layout(false);
 $utilities = new utilities();
-$service = new TransaccionServiceCookie();
-
-
-
-
-
+$service = new TransaccionServiceFile("transacciones/data");
 $listado = $service->GetList();
 
 
 //var_dump($listadoEstudiante);
 
-
-
 ?>
 
 <script type="text/javascript">
+  function ConfirmacionDelete() {
 
-function ConfirmacionDelete(){
+    var repuesta = confirm("Estas seguro que deseas eliminar la transaccion");
 
-  var repuesta = confirm("Estas seguro que deseas eliminar la transaccion");
+    if (respuesta == true) {
+      return true;
+    } else {
+      return false;
+    }
 
-  if(respuesta == true){
-    return true;
   }
-  else
-  {
-    return false;
-  }
-
-}
-
 </script>
 
 
@@ -89,28 +78,34 @@ function ConfirmacionDelete(){
                 <div class="card" style="width: 18rem;">
                   <div class="card-body">
                     <h5 class="card-title">ID: <?php echo $trans->id; ?></h5>
-                      <h5 class="card-text">fecha: <?php echo $trans->datatime; ?></h5>
-                      <h5 class="card-text">fecha: <?php echo $trans->monto; ?></h5>
-                      <h5 class="card-text">fecha: <?php echo $trans->descripcion; ?></h5>
-                       
-                            <a href="transacciones\edit.php?id=<?php echo $trans->id; ?>"  class="btn btn-primary ">Editar</a>
-                            <a href="transacciones\delete.php?id=<?php echo $trans->id; ?>" type="button" class="btn btn-danger " onclick="return confirm('Estas seguro que deseas eliminar el transaccion')">Eliminar</a>
-                  </div>
+                    <h5 class="card-text">fecha: <?php echo $trans->datatime; ?></h5>
+                    <h5 class="card-text">fecha: <?php echo $trans->monto; ?></h5>
+                    <h5 class="card-text">fecha: <?php echo $trans->descripcion; ?></h5>
+
+                    <a href="transacciones\edit.php?id=<?php echo $trans->id; ?>" class="btn btn-primary ">Editar</a>
+                    <a href="transacciones\delete.php?id=<?php echo $trans->id; ?>" type="button" class="btn btn-danger " onclick="return confirm('Estas seguro que deseas eliminar el transaccion')">Eliminar</a>
+                   
                 </div>
               </div>
 
-
+              </div>
             <?php endforeach; ?>
 
           <?php endif; ?>
 
 
 
-          </div>
+         
       </div>
     </div>
   </div>
 
 
 </main>
+
+
+
+
+
 <?php $layout->printFooter(); ?>
+

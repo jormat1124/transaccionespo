@@ -9,10 +9,10 @@ class TransaccionServiceFile implements IServiceBase{
     public $filename;
 
 
-    public function __construct()
+    public function __construct($directory = "data")
     {
         $this->Utilities = new Utilities();
-        $this->directory = "data";
+        $this->directory = $directory;
         $this->filename = "transaciones";
         $this->filehandler = new JsonFileHandler($this->directory,$this->filename);
       
@@ -20,20 +20,21 @@ class TransaccionServiceFile implements IServiceBase{
 
     public function GetList()
     {
+
+        $listadoDecode = $this->filehandler->ReadFile();
         $listado = array();
 
-        if (isset($_COOKIE[$this->cookiesName])) {
-
-            $listadoDecode = $this->filehandler->ReadFile();
+        if ($listadoDecode == false) {
+            $this->filehandler->SaveFile(array($listado));
+        } else {
+            
             foreach ($listadoDecode as $elementDecode) {
 
-                $element = new Transaccion();
+                $element = new Transaccion(); 
                 $element->set($elementDecode);
 
                 array_push($listado, $element);
             }
-        } else {
-            $this->filehandler->SaveFile($listado);
         }
         return $listado;
     }
