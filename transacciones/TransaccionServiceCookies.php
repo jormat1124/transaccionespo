@@ -48,7 +48,7 @@ class TransaccionServiceCookie implements IServiceBase{
 
     public function Add($entity){
         $listado = $this->GetList();
-        $tranId=1;
+        $tranId=0;
 
         if(!empty($listado)){
             $lastTrans = $this->Utilities->getLastElement($listado);

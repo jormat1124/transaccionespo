@@ -14,7 +14,7 @@ class TransaccionServiceFile implements IServiceBase{
         $this->Utilities = new Utilities();
         $this->directory = $directory;
         $this->filename = "transaciones";
-        $this->filehandler = new JsonFileHandler($this->directory,$this->filename);
+        $this->filehandler = new SerializationFileHandler($this->directory,$this->filename);
       
     }
 

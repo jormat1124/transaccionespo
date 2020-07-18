@@ -7,6 +7,7 @@ require_once('transacciones\TransaccionServiceCookies.php');
 
 require_once('helpers\FileHandler\IFileHandler.php ');
 require_once('helpers\FileHandler\JsonFileHandler.php');
+require_once('helpers\FileHandler\SerializationFileHandler.php');
 require_once('transacciones\TransaccionServiceFile.php');
 
 
