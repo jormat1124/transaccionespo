@@ -16,9 +16,6 @@ $utilities = new utilities();
 $service = new TransaccionServiceFile("transacciones/data");
 $listado = $service->GetList();
 
-
-//var_dump($listadoEstudiante);
-
 ?>
 
 <script type="text/javascript">
@@ -35,10 +32,7 @@ $listado = $service->GetList();
   }
 </script>
 
-
 <?php $layout->printHeader(); ?>
-
-
 
 <main role="main">
 
@@ -47,6 +41,8 @@ $listado = $service->GetList();
 
 
       <a href="transacciones\add.php" class="btn btn-primary ">Crear nueva Transaccion</a>
+
+    
 
     </div>
 
@@ -58,10 +54,13 @@ $listado = $service->GetList();
   <div class="col-md-6 my-2 text-center">
   </div>
   </div>
+  
 
   <div class="album py-1 bg-light">
     <div class="container">
       <div class="row ">
+
+      
 
 
 
@@ -80,8 +79,8 @@ $listado = $service->GetList();
                   <div class="card-body">
                     <h5 class="card-title">ID: <?php echo $trans->id; ?></h5>
                     <h5 class="card-text">fecha: <?php echo $trans->datatime; ?></h5>
-                    <h5 class="card-text">fecha: <?php echo $trans->monto; ?></h5>
-                    <h5 class="card-text">fecha: <?php echo $trans->descripcion; ?></h5>
+                    <h5 class="card-text">Monto: <?php echo $trans->monto; ?></h5>
+                    <h5 class="card-text">Descripcion: <?php echo $trans->descripcion; ?></h5>
 
                     <a href="transacciones\edit.php?id=<?php echo $trans->id; ?>" class="btn btn-primary ">Editar</a>
                     <a href="transacciones\delete.php?id=<?php echo $trans->id; ?>" type="button" class="btn btn-danger " onclick="return confirm('Estas seguro que deseas eliminar el transaccion')">Eliminar</a>

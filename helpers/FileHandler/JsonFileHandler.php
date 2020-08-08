@@ -47,6 +47,7 @@ class JsonFileHandler implements IFileHandler{
         }
 
     }
+
 }
 
 ?>

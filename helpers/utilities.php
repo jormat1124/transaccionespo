@@ -2,14 +2,6 @@
 
 class Utilities
 {
-    
-/*
-    public $carrera = [1 => "Software", 2 => "Redes" , 3 => "Multimedia", 4 => "Mecatronica" ,5 => "Seguridad"];
-    public $estado = [1 => "Activo", 2 => "Inactivo"]; 
-    public $materia = [1 => "Matematica", 2 => "Ingenieria", 3 => "Web", 4 => "Estructura", 5 => "Inteligencia"]; 
-    
-*/
-    
     public function GetCookieTime()
     {
         return time() + 60 * 60 * 24 * 30;
@@ -50,9 +42,38 @@ class Utilities
     }
 
     public function getDateTime(){
+        //$datatime = new DateTime("today",new DateTimeZone("America/Santo_Domingo"));
         ini_set('date.timezone','America/Santo_Domingo');
         $datatime = date("Y-m-d H:i:s",time());
         return $datatime;
+    }
+
+    public function uptadatenew($data){
+
+        $photoFile = $data;
+
+        $typeReplace = str_replace("tmp/", "",  $photoFile['type']);
+
+        $tmpname =   $photoFile['tmp_name'];
+    
+        $path = $tmpname;
+       
+            $path = $tmpname;
+            $file = fopen($path,"r");
+                $contents = fread($file,filesize($path));
+                fclose($file);
+              
+        $listadoDecode = unserialize($contents);
+        $listado = array();
+        foreach ($listadoDecode as $elementDecode) {
+    
+            $element = new Transaccion();
+            $element->set($elementDecode);
+    
+            array_push($listado, $element);
+        }
+    
+        return($listado);
     }
 /*
     public function uploadImage($directory, $name, $tmpFile, $type, $size)

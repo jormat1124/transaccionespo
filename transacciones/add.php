@@ -1,5 +1,7 @@
 <?php
 
+use function PHPSTORM_META\type;
+
 require_once('..\layout\layout.php');
 require_once('..\helpers\utilities.php');
 require_once('transacciones.php');
@@ -17,17 +19,28 @@ $layout = new Layout(true);
 $utilities = new utilities();
 $service = new TransaccionServiceFile();
 
+if (isset($_POST['cargartxt'])) {
 
-$datatime=$utilities->getDateTime();
+    $listado = $utilities->uptadatenew($_FILES['filename']);
+    
+
+    foreach ($listado as $trans) {
+        $newTran = new Transaccion();
+        $newTran->InicializeData(0, $trans->datatime, $trans->monto, $trans->descripcion);
+
+        
+    }$service->Add($newTran);
+
+    
+}
 
 
-if (isset($_POST['monto']) && isset($_POST['descripcion'])) {
+$datatime = $utilities->getDateTime();
+
+if (isset($_POST['descripcion'])) {
 
     $newTran = new Transaccion();
-
     $newTran->InicializeData(0,$datatime, $_POST['monto'], $_POST['descripcion']);
-
-
     $service->Add($newTran);
 
 
@@ -37,9 +50,7 @@ if (isset($_POST['monto']) && isset($_POST['descripcion'])) {
 }
 
 
-
 ?>
-
 
 <?php $layout->printHeader(true); ?>
 <main role="main">
@@ -50,7 +61,7 @@ if (isset($_POST['monto']) && isset($_POST['descripcion'])) {
             <div class="card">
 
                 <div class="card-header bg-dark text-light">
-                    <a href="..\index.php" class="btn btn-warning">Volver atras</a>  Crear nueva transaccion</div>
+                    <a href="..\index.php" class="btn btn-warning">Volver atras</a> Crear nueva transaccion</div>
             </div>
 
 
@@ -70,17 +81,27 @@ if (isset($_POST['monto']) && isset($_POST['descripcion'])) {
                     
 
 
-                  
-                 
-
-<br>
 
 
-              
 
-                    <button type="submit" class="btn btn-success">Guardar</button>
+
+
+
+
+                    <br>
+
+
+
+
+                    <input type="submit" name="guardar" class="btn btn-success" value="Guardar">
 
                 </form>
+                <form action="add.php" method="post">
+                    
+                <input type="file" name="filename">
+                        <input type="submit" name="cargartxt" value="Cargar">
+                   
+            </form>
             </div>
         </div>
     </div>

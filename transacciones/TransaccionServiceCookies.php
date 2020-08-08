@@ -47,8 +47,10 @@ class TransaccionServiceCookie implements IServiceBase{
 
 
     public function Add($entity){
+
+
         $listado = $this->GetList();
-        $tranId=0;
+        $tranId=1;
 
         if(!empty($listado)){
             $lastTrans = $this->Utilities->getLastElement($listado);
@@ -63,11 +65,10 @@ class TransaccionServiceCookie implements IServiceBase{
     }
 
 
-    //Falata por editar
 public function Update($id,$entity){
     
     
-    //$element = $this->GetById($id);
+   
 
     $listado = $this->GetList();
 
